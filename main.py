@@ -1,6 +1,11 @@
 from tabulate import tabulate # pip install tabulate 
 
 # Dentist schedule and appointment structure
+dentist_schedule = [
+    {"index": 1, "name":"Dr. Mancion","date":"August 17,2026","time":"9:00AM To 1:00PM"},
+    {"index": 2, "name":"Dr. Mendoza","date":"August 18,2026","time":"10:00AM To 2:00PM"},
+    {"index": 3, "name":"Dr. Escoto","date":"August 19,2026","time":"11:00AM To 3:00PM"}
+]
 dentist_appointments = [
     {}
 ]
