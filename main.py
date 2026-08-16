@@ -1,5 +1,5 @@
 from tabulate import tabulate # pip install tabulate 
-
+from view_appointments import view_records
 # Dentist schedule and appointment structure
 dentist_schedule = [
     {"index": 1, "name":"Dr. Mancion","date":"August 17,2026","time":"9:00AM To 1:00PM"},
@@ -42,14 +42,14 @@ def create_appointment():
 print("-- Dental Record System --\n");
 
 print("Choices:\n1. Create an appointment\n2. View Records");
-choice = int((input("Choose an action [1-2, 0 to exit]: ")));
+choice = int(input("Choose an action [1-2, 0 to exit]: "));
 
 while True:
     match choice:
         case 1:
             create_appointment();
         case 2:
-            view_records();
+            view_records(dentist_appointments);
         case 0:
             print("Exiting the system...");
             break;
