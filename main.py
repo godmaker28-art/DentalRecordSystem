@@ -6,6 +6,10 @@ dentist_schedule = [
     {"name":"Dr. Escoto","date":"August 19,2026","time":"11:00AM To 3:00PM"}
 ]
 
+dentist_appointments = [
+    {}
+]
+
 # Functions
 
 
