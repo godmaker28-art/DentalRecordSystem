@@ -1,6 +1,5 @@
 from tabulate import tabulate
 
-# Dentist schedule and appointment structure updated to support multiple bookings per doctor
 dentist_appointments = [
     {
         "index": 1, 
@@ -31,7 +30,6 @@ dentist_appointments = [
     }
 ]
 
-# Functions
 def create_appointment():
     print("\n-- Appointment Creation --")
     patient_name = input("Patient Name: ").strip()
@@ -41,10 +39,8 @@ def create_appointment():
 
     print(f"\nAppointed Patient: {patient_name}\nChoose your Available Dentist:")
 
-    # Prepare data for tabulate view
     table_data = []
     for doc in dentist_appointments:
-        # Show only available time slots
         available_slots = [slot["time"] for slot in doc["slots"] if slot["patient"] is None]
         time_str = " / ".join(available_slots) if available_slots else "Fully Booked"
         
@@ -66,7 +62,6 @@ def create_appointment():
         if 1 <= dentist_no <= len(dentist_appointments):
             doc = dentist_appointments[dentist_no - 1]
             
-            # Filter available slots for this doctor
             unbooked_slots = [slot for slot in doc["slots"] if slot["patient"] is None]
             
             if not unbooked_slots:
@@ -116,7 +111,6 @@ def update_records():
     print(tabulate(table_data, headers=custom_headers, tablefmt="grid"))
     print("\nTo rebook or change an appointment, please cancel/create a new one or use the creation menu.")
 
-# Main system loop
 print("-- Dental Record System --\n")
 
 while True:
