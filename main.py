@@ -14,6 +14,7 @@ dentist_appointments = [
 def new_appointment(patient_name, index):
     pass
 
+
 def create_appointment():
     print("-- Appointment Creation --");
     patient_name = input("Patient Name: ");
@@ -28,10 +29,13 @@ def create_appointment():
         match dentist_no:
                 case 1:
                     new_appointment(patient_name,0);
+                    break
                 case 2:
                     new_appointment(patient_name,1);
+                    break
                 case 3:
                     new_appointment(patient_name,2);
+                    break
                 case 0:
                     return;
                 case _:
@@ -39,21 +43,25 @@ def create_appointment():
 
 
 # main starts here!
-print("-- Dental Record System --\n");
-
-print("Choices:\n1. Create an appointment\n2. View Records");
-choice = int(input("Choose an action [1-2, 0 to exit]: "));
-
 while True:
-    match choice:
-        case 1:
-            create_appointment();
-        case 2:
-            view_records(dentist_appointments);
-        case 0:
-            print("Exiting the system...");
-            break;
-        case _:
-            print("Invalid Input!");
+    print("-- Dental Record System --\n");
+
+    print("Choices:\n1. Create an appointment\n2. View Records");
+    try:
+        choice = int((input("Choose an action [1-2, 0 to exit]: ")));
+
+            
+        match choice:
+                    case 1:
+                        create_appointment();
+                    case 2:
+                        view_records(dentist_appointments);
+                    case 0:
+                        print("Exiting the system...");
+                        break;
+                    case _:
+                        print("Invalid Input!");
+    except ValueError:
+        print("Invalid Input!");
 
 
