@@ -1,7 +1,6 @@
 def update_appointment():
     print("\n-- Update Appointment --")
     
-    # Gather all booked slots with an incremental index for easy selection
     booked_slots_list = []
     for doc in dentist_schedule:
         for slot in doc["slots"]:
@@ -88,7 +87,6 @@ def update_appointment():
                 if 0 <= time_choice < len(unbooked_slots):
                     new_slot = unbooked_slots[time_choice]
                     
-                    # Free up old slot and assign new slot
                     old_slot["patient"] = None
                     new_slot["patient"] = patient_name
                     print(f"\nAppointment successfully updated for {patient_name} with {new_doc['doctor']} at {new_slot['time']}!\n")
