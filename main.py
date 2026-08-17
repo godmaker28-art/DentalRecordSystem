@@ -12,7 +12,9 @@ dentist_appointments = [
 
 # Functions
 def new_appointment(patient_name, index):
-    pass
+    new_appointment = {"patient": patient_name, "dentist": dentist_schedule[0]["name"], "date": dentist_schedule[0]["date"], "time": dentist_schedule[0]["time"]};
+    dentist_appointments.append(new_appointment);
+    print("Appointment Successfully Added!\n\n");
 
 
 def create_appointment():
