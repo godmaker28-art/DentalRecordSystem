@@ -2,6 +2,7 @@ from tabulate import tabulate # pip install tabulate
 from view_appointments import view_records
 from create import create_appointment
 from delete import delete_appointment
+from update import update_records
 # Dentist schedule and appointment structure
 dentist_schedule = [
     {"index": 1, "name":"Dr. Mancion","date":"August 17,2026","time":"9:00AM To 1:00PM"},
@@ -34,9 +35,9 @@ def new_appointment(patient_name, index):
 while True:
     print("-- Dental Record System --\n");
 
-    print("Choices:\n1. Create an appointment\n2. View Records\n3. Delete Appointment");
+    print("Choices:\n1. Create an appointment\n2. View Records\n3. Delete Appointment\n4. Update Appointment");
     try:
-        choice = int((input("Choose an action [1-2, 0 to exit]: ")));
+        choice = int((input("Choose an action [1-4, 0 to exit]: ")));
 
             
         match choice:
@@ -50,6 +51,8 @@ while True:
                         view_records(dentist_appointments)
                     case 3:
                         delete_appointment(dentist_appointments)
+                    case 4:
+                        update_records(dentist_appointments, dentist_schedule)
                     case 0:
                         print("Exiting the system...")
                         break
