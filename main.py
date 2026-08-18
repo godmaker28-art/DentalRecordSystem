@@ -1,5 +1,6 @@
 from tabulate import tabulate # pip install tabulate 
 from view_appointments import view_records
+from create import create_appointment
 # Dentist schedule and appointment structure
 dentist_schedule = [
     {"index": 1, "name":"Dr. Mancion","date":"August 17,2026","time":"9:00AM To 1:00PM"},
@@ -22,31 +23,7 @@ def new_appointment(patient_name, index):
     return 0
 
 
-def create_appointment():
-    print("-- Appointment Creation --");
-    patient_name = input("Patient Name: ");
-    print (f"\nAppointed Patient: {patient_name}\nChoose your Available Dentist:");
 
-    custom_headers = {"index":"No.", "name":"Dentist's Name", "date":"Date Available", "time":"Time"}
-    print(tabulate(dentist_schedule, headers=custom_headers, tablefmt="grid"));
-
-    dentist_no = int(input("Choice [1-3, 0 to return]: "));
-
-    while True:
-        match dentist_no:
-                case 1:
-                    new_appointment(patient_name,0);
-                    break
-                case 2:
-                    new_appointment(patient_name,1);
-                    break
-                case 3:
-                    new_appointment(patient_name,2);
-                    break
-                case 0:
-                    return;
-                case _:
-                    print("Invalid Input!");
 
 
 # main starts here!
@@ -60,15 +37,19 @@ while True:
             
         match choice:
                     case 1:
-                        create_appointment();
+                        result = create_appointment(dentist_schedule)
+
+                        if result is not None:
+                            patient_name, index = result
+                            new_appointment(patient_name, index) 
                     case 2:
-                        view_records(dentist_appointments);
+                        view_records(dentist_appointments)
                     case 0:
-                        print("Exiting the system...");
-                        break;
+                        print("Exiting the system...")
+                        break
                     case _:
-                        print("Invalid Input!");
+                        print("Invalid Input!")
     except ValueError:
-        print("Invalid Input!");
+        print("Invalid Input!")
 
 
