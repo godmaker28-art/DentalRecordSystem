@@ -1,13 +1,21 @@
-patient_1 = "Joshua M. Manaliti"
-patient_2 = "Jerico L. Figura"
 
-dentist_schedule = [
-    {"name":"Dr. Mancion","date":"August 17,2026","time":"9:00AM To 1:00PM"},
-    {"name":"Dr. Mendoza","date":"August 18,2026","time":"10:00AM To 2:00PM"},
-    {"name":"Dr. Escoto","date":"August 19,2026","time":"11:00AM To 3:00PM"}
-]
-    
-#viewing scheduled patient
-print("Appointed Pationt Name:" + patient_1)
-for i in dentist_schedule:
-    print(f'{i["name"]}, {i["date"]:>20}, {i["time"]:>20}')
+from tabulate import tabulate
+
+def view_records(appointment_list):
+    print("\n -- Dental Clinic Records --")
+    filtered_records = [app for app in appointment_list if app]
+    if not filtered_records:
+        print("Empty Set - No Active patien's appointment yet. \n")
+        input("Press Enter to Go back to the main menu...")
+        return
+    custom_headers = {
+        "patient":"Patient's Name",
+        "dentist":"Dentist's Name",
+        "date":"Date",
+        "time":'Time'
+    }
+
+    print(tabulate(filtered_records, headers=custom_headers, tablefmt="grid"))
+    print("\n")
+
+    input("Press Enter to Go back to the main menu...")
